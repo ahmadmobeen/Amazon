@@ -11,13 +11,24 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        current = head
-        prev = None
+#         current = head
+#         prev = None
         
-        while current:
-            tmp_next = current.next
-            current.next = prev
-            prev = current
-            current = tmp_next
-        return prev
+#         while current:
+#             tmp_next = current.next
+#             current.next = prev
+#             prev = current
+#             current = tmp_next
+#         return prev
         
+        
+        #### Recursive
+        
+        if (not head) or (not head.next):
+            return head
+        
+        p = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+        
+        return p
