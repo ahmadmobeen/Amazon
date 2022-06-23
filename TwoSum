@@ -1,0 +1,41 @@
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        
+        # Optimal O(N)
+        res = []
+        mp = {}
+        
+        for i in range(len(nums)):
+            need = target - nums[i]
+            if need in mp:
+                return [i, mp[need]]
+            else:
+                mp[nums[i]] = i
+        
+        # O(2 * N) it can be further optimized by populating the mp dict on the go.
+        '''       
+        res = []
+        mp = {}
+        for i in range(len(nums)):
+            mp[nums[i]] = i
+        
+        for i in range(len(nums)):
+            need = target - nums[i]
+            if need in mp.keys():
+                res.append(mp[need])
+                res.append(i)
+                return res'''
+                
+        
+        #Brute Force O(N^2)
+        
+        '''
+        res = []
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums)):
+                
+                s = nums[i] + nums[j]
+                if s == target:
+                    res = [i, j]
+        return res
+        '''        
